@@ -5,6 +5,7 @@ using SalesProject.Services;
 using SalesProject.Services.Exceptions;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -120,6 +121,16 @@ namespace SalesProject.Controllers
             {
                 return BadRequest();
             }
+        }
+
+        public IActionResult Error (string message)
+        {
+            var viewModel = new ErrorViewModel
+            {
+                Message = message,
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+            };
+            return View(viewModel);
         }
     }
 }
