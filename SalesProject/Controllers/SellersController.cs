@@ -41,6 +41,8 @@ namespace SalesProject.Controllers
         {
             if (!ModelState.IsValid)
             {
+                var departments = _departmentService.FindAll();
+                var viewModel = new SellerFormViewModel { Seller = seller, Departments = departments };
                 return View(seller);
             }
             _sellerService.Insert(seller);
@@ -110,6 +112,8 @@ namespace SalesProject.Controllers
         {
             if (!ModelState.IsValid)
             {
+                var departments = _departmentService.FindAll();
+                var viewModel = new SellerFormViewModel { Seller = seller, Departments = departments };
                 return View(seller);
             }
             if (id != seller.Id)
