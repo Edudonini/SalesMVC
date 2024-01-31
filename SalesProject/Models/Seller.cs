@@ -8,11 +8,14 @@ namespace SalesProject.Models
     public class Seller
     {
         public int Id { get; set; }
+        [Required]
+        [StringLength(60, MinimumLength = 3, ErrorMessage = "{0} size should be between {2} and {1}")]
         public string Name { get; set; }
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         [Display(Name = "Bith Date")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString ="{0:dd/MM/yyyy}")]
         public DateTime BithDate { get; set; }
         [Display(Name = "Base Salary")]
         [DisplayFormat(DataFormatString ="{0:F2}")]
